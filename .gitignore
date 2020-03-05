@@ -1,0 +1,11 @@
+*
+
+!*.sh
+!docker/
+!docker/**/*
+!docker/**/Dockerfile
+!docker/**/Rockerfile
+!.gitignore
+!*.txt
+!*.md
+!Jenkinsfile
