@@ -9,7 +9,7 @@ def remove_null_byte_characters(base_directory, file_match):
     p = Path(base_directory).glob(file_match)
     for log in p:
         output = check_output(["file", "-i", f"{log}"])
-        if "charset=binary" in str(output):
+        if "charset=binary" or "charset=us-ascii" in str(output):
             old_file = open(f"{log}", "rt")
             new_file = open("/tmp/tmp.log", "wt")
             for line in old_file:
