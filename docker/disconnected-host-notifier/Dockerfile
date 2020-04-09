@@ -27,3 +27,12 @@ COPY app/app.py /app/app.py
 ENTRYPOINT ["python3", "/app/app.py"]
 
 TAG {{ $image }}:{{ $baseTag }}
+
+######################################################################
+# Release
+######################################################################
+
+##### Publish the image #####
+{{ if (eq $action "publish") (ne $tag "local") }}
+PUSH {{ $repo }}{{ $image }}
+{{ end }}
