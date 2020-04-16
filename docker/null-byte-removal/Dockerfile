@@ -58,5 +58,5 @@ TAG {{ $image }}:{{ $testResultsTag }}
 
 ##### Publish the image #####
 {{ if (eq $action "publish") (ne $tag "local") }}
-PUSH {{ $repo }}{{ $image }}
+PUSH {{ $repo }}{{ $image }}:{{ $tag }}
 {{ end }}
