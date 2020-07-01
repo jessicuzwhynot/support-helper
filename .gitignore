@@ -1,11 +1,17 @@
 *
 
-!*.sh
+!build.sh
 !docker/
 !docker/**/*
 !docker/**/Dockerfile
 !docker/**/Rockerfile
+
+
 !.gitignore
 !*.txt
 !*.md
 !Jenkinsfile
+
+#locals
+docker/**/venv
+docker/provisioning-automation/docker-compose-creds.yml

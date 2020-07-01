@@ -1,0 +1,14 @@
+#cloud-config
+rancher:
+  services:
+    rancher-agent-launch:
+      image: "rancher/agent:v1.2.9"
+      command:
+      - "{{ registration_url }}"
+      restart: "on-failure"
+      privileged: true
+      volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/var/lib/rancher:/var/lib/rancher"
+      environment:
+        CATTLE_HOST_LABELS: "crate.host.name={{ crate_hostname }}&crate.region={{ crate_region }}"

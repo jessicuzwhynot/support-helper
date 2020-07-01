@@ -1,0 +1,11 @@
+#!/usr/bin/sh
+
+set -x
+
+exec docker run -it --rm -v terraform:/app/terraform --env VSPHERE_USER="{{ vm_user }}" \
+--env VSPHERE_PASSWORD="{{ vm_pass }}" \
+dockerhub.cisco.com/crate-docker/vmdeploy-service:v1.2.2 \
+-r prod -b https://provisioning.services.ciscocrate.com/assets \
+-c {{ datacenter }} -o {{ environment }} \
+-x {{ host_uuid }} -n {{ host_name }} --rosversion v1.4.2 -v \
+-C {{ num_cpus }} -M {{ total_ram }} -D {{ hdd_size }}
